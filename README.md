@@ -69,7 +69,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement notify function in Notification service to notify each Subscriber.`
     -   [x] Commit: `Implement publish function in Program service and Program controller.`
     -   [x] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [x] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -78,29 +78,49 @@ This is the place for you to write reflections:
 
 #### Reflection Publisher-1
 1. In the Observer pattern diagram explained by the Head First Design Pattern book, Subscriber is defined as an interface. Explain based on your understanding of Observer design patterns, do we still need an interface (or trait in Rust) in this BambangShop case, or a single Model struct is enough?
+
 Jawaban : 
 Dalam kasus BambangShop, meskipun sebuah struktur Model tunggal mungkin sudah cukup untuk merepresentasikan data yang diamati, penggunaan antarmuka atau trait untuk para Observer masih memberikan keuntungan. Dengan adanya antarmuka atau trait, pengembang dapat dengan mudah mengimplementasikan berbagai jenis Observer dengan perilaku yang berbeda sesuai kebutuhan aplikasi, seperti EmailSubscriber dan SMSSubscriber. Hal ini memungkinkan fleksibilitas dalam mengganti atau menambahkan jenis Observer baru tanpa harus mengubah struktur Model tunggal, sehingga memudahkan pengembangan sistem dan penyesuaian terhadap kebutuhan yang berubah
 
 2. id in Program and url in Subscriber is intended to be unique. Explain based on your understanding, is using Vec (list) sufficient or using DashMap (map/dictionary) like we currently use is necessary for this case?
+
 Jawaban : 
 id dalam Program dan url dalam Subscriber dimaksudkan untuk unik. Penggunaan Vec (list) mungkin sudah cukup jika pencarian id atau url dilakukan berdasarkan indeks atau posisi dalam list. Namun, jika pencarian perlu dilakukan berdasarkan kunci (id atau url) secara langsung, penggunaan DashMap (map/dictionary) lebih disarankan karena memungkinkan pencarian dengan kompleksitas waktu yang lebih baik (O(1) dibandingkan dengan O(n) pada Vec).
 
 3. When programming using Rust, we are enforced by rigorous compiler constraints to make a thread-safe program. In the case of the List of Subscribers (SUBSCRIBERS) static variable, we used the DashMap external library for thread safe HashMap. Explain based on your understanding of design patterns, do we still need DashMap or we can implement Singleton pattern instead?
+
 Jawaban : 
 Dalam Rust, compiler yang ketat memastikan keamanan thread dalam program. Meskipun demikian, dalam kasus SUBSCRIBERS yang merupakan variabel statis, penggunaan DashMap untuk memastikan keamanan thread tetap menjadi pilihan yang baik. Singleton pattern tidak selalu menjamin keamanan thread, terutama dalam kasus konkurensi. Dengan menggunakan DashMap, operasi pada SUBSCRIBERS dapat dilakukan secara aman oleh beberapa thread secara bersamaan, sehingga memastikan keamanan thread dalam aplikasi Rust.
 
 #### Reflection Publisher-2
 1. In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?
+
 Jawaban : 
 Dalam desain perangkat lunak, prinsip-prinsip seperti Separation of Concerns (Pemisahan Kepentingan) dan Single Responsibility Principle (Prinsip Tanggung Jawab Tunggal) mengajarkan kita untuk memisahkan tanggung jawab yang berbeda menjadi komponen-komponen yang terpisah. Dengan memisahkan "Service" dan "Repository" dari Model, kita dapat mencapai pemisahan antara logika bisnis (yang ditangani oleh Service) dan akses ke data (yang ditangani oleh Repository). Ini tidak hanya membuat kode menjadi lebih mudah dipahami dan dikelola, tetapi juga memungkinkan untuk pengujian yang lebih baik dan fleksibilitas yang lebih besar dalam mengganti atau memperbarui komponen-komponen tersebut tanpa memengaruhi yang lainnya.
 
 2. What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?
+
 Jawaban : 
 Jika kita hanya menggunakan Model tanpa memisahkan logika bisnis dan akses data ke dalam "Service" dan "Repository", kompleksitas kode mungkin akan meningkat secara signifikan. Setiap model (seperti Program, Subscriber, Notification) akan memiliki tanggung jawab ganda untuk mengelola baik logika bisnis maupun akses ke data, yang dapat menyebabkan kebingungan dan kekacauan dalam kode. Interaksi langsung antara model-model tersebut juga dapat meningkatkan ketergantungan antar mereka, membuat kode menjadi sulit untuk diuji dan dipelihara.
 
 3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
+    
 Jawaban : 
 Postman adalah alat yang sangat berguna untuk menguji API dan melakukan debugging. Saya telah menggunakan Postman untuk mengirim permintaan HTTP ke endpoint-endpoint API yang saya buat dalam proyek-proyek saya. Fitur-fitur seperti pembuatan permintaan HTTP yang mudah, pengelolaan koleksi permintaan, kemampuan untuk menambahkan variabel dan skrip dalam permintaan, serta kemampuan untuk mengatur dan menyimpan respons API, semuanya sangat membantu dalam menguji dan mengembangkan API. Selain itu, Postman menyediakan lingkungan pengembangan yang terisolasi yang memungkinkan saya untuk melakukan uji coba dan eksperimen tanpa memengaruhi lingkungan produksi.
 
 
 #### Reflection Publisher-3
+1. Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and Pull model (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?
+
+Jawaban : 
+Dalam kasus tutorial ini, kita menggunakan variasi Push model dari pola Observer. Dalam Push model, penerbit secara aktif mengirimkan pembaruan kepada pelanggan yang berlangganan.
+
+2. What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)
+
+Jawaban : 
+Jika kita memilih untuk menggunakan variasi Pull model dari pola Observer untuk kasus tutorial ini, kelebihannya mungkin adalah bahwa pelanggan hanya akan meminta data saat dibutuhkan, mengurangi beban pada penerbit dalam hal pengiriman pembaruan yang tidak perlu. Namun, kelemahannya adalah bahwa implementasi Pull model mungkin memerlukan lebih banyak kode, terutama untuk mengelola permintaan data dari pelanggan secara efisien.
+
+3. Explain what will happen to the program if we decide to not use multi-threading in the notification process.
+
+Jawaban : 
+Jika kita memutuskan untuk tidak menggunakan multi-threading dalam proses notifikasi, maka program mungkin akan menjadi tidak responsif atau lambat dalam menanggapi permintaan notifikasi, terutama jika ada banyak pelanggan yang berlangganan. Tanpa multi-threading, proses notifikasi akan dieksekusi secara serial, menyebabkan pelanggan harus menunggu giliran untuk menerima pembaruan, yang dapat mengakibatkan penundaan dalam pengiriman notifikasi.
