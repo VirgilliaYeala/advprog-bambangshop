@@ -90,5 +90,16 @@ Jawaban :
 Dalam Rust, compiler yang ketat memastikan keamanan thread dalam program. Meskipun demikian, dalam kasus SUBSCRIBERS yang merupakan variabel statis, penggunaan DashMap untuk memastikan keamanan thread tetap menjadi pilihan yang baik. Singleton pattern tidak selalu menjamin keamanan thread, terutama dalam kasus konkurensi. Dengan menggunakan DashMap, operasi pada SUBSCRIBERS dapat dilakukan secara aman oleh beberapa thread secara bersamaan, sehingga memastikan keamanan thread dalam aplikasi Rust.
 
 #### Reflection Publisher-2
+1. In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?
+Jawaban : 
+Dalam desain perangkat lunak, prinsip-prinsip seperti Separation of Concerns (Pemisahan Kepentingan) dan Single Responsibility Principle (Prinsip Tanggung Jawab Tunggal) mengajarkan kita untuk memisahkan tanggung jawab yang berbeda menjadi komponen-komponen yang terpisah. Dengan memisahkan "Service" dan "Repository" dari Model, kita dapat mencapai pemisahan antara logika bisnis (yang ditangani oleh Service) dan akses ke data (yang ditangani oleh Repository). Ini tidak hanya membuat kode menjadi lebih mudah dipahami dan dikelola, tetapi juga memungkinkan untuk pengujian yang lebih baik dan fleksibilitas yang lebih besar dalam mengganti atau memperbarui komponen-komponen tersebut tanpa memengaruhi yang lainnya.
+
+2. What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?
+Jawaban : 
+Jika kita hanya menggunakan Model tanpa memisahkan logika bisnis dan akses data ke dalam "Service" dan "Repository", kompleksitas kode mungkin akan meningkat secara signifikan. Setiap model (seperti Program, Subscriber, Notification) akan memiliki tanggung jawab ganda untuk mengelola baik logika bisnis maupun akses ke data, yang dapat menyebabkan kebingungan dan kekacauan dalam kode. Interaksi langsung antara model-model tersebut juga dapat meningkatkan ketergantungan antar mereka, membuat kode menjadi sulit untuk diuji dan dipelihara.
+
+3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
+Jawaban : 
+Postman adalah alat yang sangat berguna untuk menguji API dan melakukan debugging. Saya telah menggunakan Postman untuk mengirim permintaan HTTP ke endpoint-endpoint API yang saya buat dalam proyek-proyek saya. Fitur-fitur seperti pembuatan permintaan HTTP yang mudah, pengelolaan koleksi permintaan, kemampuan untuk menambahkan variabel dan skrip dalam permintaan, serta kemampuan untuk mengatur dan menyimpan respons API, semuanya sangat membantu dalam menguji dan mengembangkan API. Selain itu, Postman menyediakan lingkungan pengembangan yang terisolasi yang memungkinkan saya untuk melakukan uji coba dan eksperimen tanpa memengaruhi lingkungan produksi.
 
 #### Reflection Publisher-3
