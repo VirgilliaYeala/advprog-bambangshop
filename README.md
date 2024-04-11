@@ -77,6 +77,17 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. In the Observer pattern diagram explained by the Head First Design Pattern book, Subscriber is defined as an interface. Explain based on your understanding of Observer design patterns, do we still need an interface (or trait in Rust) in this BambangShop case, or a single Model struct is enough?
+Jawaban : 
+Dalam kasus BambangShop, meskipun sebuah struktur Model tunggal mungkin sudah cukup untuk merepresentasikan data yang diamati, penggunaan antarmuka atau trait untuk para Observer masih memberikan keuntungan. Dengan adanya antarmuka atau trait, pengembang dapat dengan mudah mengimplementasikan berbagai jenis Observer dengan perilaku yang berbeda sesuai kebutuhan aplikasi, seperti EmailSubscriber dan SMSSubscriber. Hal ini memungkinkan fleksibilitas dalam mengganti atau menambahkan jenis Observer baru tanpa harus mengubah struktur Model tunggal, sehingga memudahkan pengembangan sistem dan penyesuaian terhadap kebutuhan yang berubah
+
+2. id in Program and url in Subscriber is intended to be unique. Explain based on your understanding, is using Vec (list) sufficient or using DashMap (map/dictionary) like we currently use is necessary for this case?
+Jawaban : 
+id dalam Program dan url dalam Subscriber dimaksudkan untuk unik. Penggunaan Vec (list) mungkin sudah cukup jika pencarian id atau url dilakukan berdasarkan indeks atau posisi dalam list. Namun, jika pencarian perlu dilakukan berdasarkan kunci (id atau url) secara langsung, penggunaan DashMap (map/dictionary) lebih disarankan karena memungkinkan pencarian dengan kompleksitas waktu yang lebih baik (O(1) dibandingkan dengan O(n) pada Vec).
+
+3. When programming using Rust, we are enforced by rigorous compiler constraints to make a thread-safe program. In the case of the List of Subscribers (SUBSCRIBERS) static variable, we used the DashMap external library for thread safe HashMap. Explain based on your understanding of design patterns, do we still need DashMap or we can implement Singleton pattern instead?
+Jawaban : 
+Dalam Rust, compiler yang ketat memastikan keamanan thread dalam program. Meskipun demikian, dalam kasus SUBSCRIBERS yang merupakan variabel statis, penggunaan DashMap untuk memastikan keamanan thread tetap menjadi pilihan yang baik. Singleton pattern tidak selalu menjamin keamanan thread, terutama dalam kasus konkurensi. Dengan menggunakan DashMap, operasi pada SUBSCRIBERS dapat dilakukan secara aman oleh beberapa thread secara bersamaan, sehingga memastikan keamanan thread dalam aplikasi Rust.
 
 #### Reflection Publisher-2
 
