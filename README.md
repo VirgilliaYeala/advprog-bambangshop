@@ -63,9 +63,9 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement subscribe function in Notification controller.`
     -   [x] Commit: `Implement unsubscribe function in Notification service.`
     -   [x] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
-    -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
+    -   [x] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
     -   [ ] Commit: `Implement publish function in Program service and Program controller.`
     -   [ ] Commit: `Edit Product service methods to call notify after create/delete.`
@@ -101,5 +101,6 @@ Jika kita hanya menggunakan Model tanpa memisahkan logika bisnis dan akses data 
 3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
 Jawaban : 
 Postman adalah alat yang sangat berguna untuk menguji API dan melakukan debugging. Saya telah menggunakan Postman untuk mengirim permintaan HTTP ke endpoint-endpoint API yang saya buat dalam proyek-proyek saya. Fitur-fitur seperti pembuatan permintaan HTTP yang mudah, pengelolaan koleksi permintaan, kemampuan untuk menambahkan variabel dan skrip dalam permintaan, serta kemampuan untuk mengatur dan menyimpan respons API, semuanya sangat membantu dalam menguji dan mengembangkan API. Selain itu, Postman menyediakan lingkungan pengembangan yang terisolasi yang memungkinkan saya untuk melakukan uji coba dan eksperimen tanpa memengaruhi lingkungan produksi.
+
 
 #### Reflection Publisher-3
